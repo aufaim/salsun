@@ -1,0 +1,4 @@
+[2022-11-29 12:36:50] login-Error : SELECT * FROM penjual WHERE username = "ad" AND password = "523af537946b79c4f8369ed39ba78605"
+[2022-11-29 12:37:43] login-Error : SELECT * FROM penjual WHERE username = "ad" AND password = "523af537946b79c4f8369ed39ba78605"
+[2022-11-29 12:37:57] login-Error : SELECT * FROM penjual WHERE username = "ad" AND password = "523af537946b79c4f8369ed39ba78605"
+[2022-11-29 12:38:09] login-Error : SELECT * FROM penjual WHERE username = "admin3" AND password = "32cacb2f994f6b42183a1300d9a3e8d6"
