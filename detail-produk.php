@@ -16,6 +16,8 @@
     if(isset($_POST['logout'])){ // jika ada post logout
         logout(); // maka jalankan function logout di functions.php
     }
+    $produk = mysqli_query($conn, "SELECT * FROM produk WHERE kode_produk = '".$_GET['id']."' ");
+    $p = mysqli_fetch_object($produk);
 ?> 
 
 <!DOCTYPE html>
@@ -32,13 +34,13 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Custom css file link -->
-    <link rel="stylesheet" href="css/user/index.css">
+    <link rel="stylesheet" href="css/user/detail-produk.css">
     
 </head>
 <body>
 <!-- Header section starts -->
 <header class="header">
-    <a href="#" class="logo">
+    <a href="index.php" class="logo">
         <i class=image>
             <img src="image/SALSUN_LOGO.png" alt="" width="45px" height="45px">
         </i></a>
@@ -54,12 +56,11 @@
         
     </div>
     <nav class="navbar">
-        <a href="#home">Home</a>
-        <a href="#menu">menu</a>
-        <a href="#order">Order</a>
-        <a href="#contact">Contact</a>
-        <a href="#review">Review</a>
-        <a href="#about">About Us</a>
+        <a href="index.php">Home</a>
+        <a href="index.php#menu">menu</a>
+        <a href="index.php#order">Order</a>
+        <a href="index.php#review">Review</a>
+        <a href="index.php#about">About Us</a>
        
         
         <?php 
@@ -78,21 +79,26 @@
 <!-- Header section ends-->
 
 <!-- menu section starts start -->
-<section class="menu" id="menu">
-    <h1 class="heading"> Our <span>menu</span></h1>
-    <div class="box-container">
-        <div class="box">
-            <img src="produk/<?php echo $p->gambar_produk ?>" width="100%">
+<section>
+    <div class="menu">
+        <h1 class="heading"> Our <span>menu</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="col-2">
+                    <img src="image/upload/<?php echo $p->gambar_produk ?>" width="100%">
+                </div>
+                <div class="col-3">
+                    <h3><?php echo $p->nama_produk ?></h3>
+                    <h4>Rp. <?php echo number_format($p->harga_produk) ?></h4>
+                    <p>Deskripsi : <br>
+                        <?php echo $p->deskripsi_produk ?>
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="box">
-            <h3><?php echo $p->nama_produk ?></h3>
-            <h4>Rp. <?php echo number_format($p->harga_produk) ?></h4>
-            <p>Deskripsi : <br>
-                <?php echo $p->deskripsi_produk ?>
-            </p>
-            <a href="https://api.whatsapp.com/send?phone=<?php echo $k->telp_penjual ?>&text=Hai, saya tertarik dengan produk Anda." target="_blank" class="btn">Order</a>
-        </div> 
     </div>
+    
+    
 </section>
 
 
@@ -101,24 +107,11 @@
     <div class="box-container">
         <div class="box">
             <h3>Quick Links</h3>
-            <a href="#home"><i class="fa-solid fa-chevron-right"></i>Home</a>
-            <a href="#menu"><i class="fa-solid fa-chevron-right"></i>menu</a>
-            <a href="#order"><i class="fa-solid fa-chevron-right"></i>Order</a>
-            <a href="#about"><i class="fa-solid fa-chevron-right"></i>About Us</a>
-            <a href="#book"><i class="fa-solid fa-chevron-right"></i>Book</a>
-            <a href="#review"><i class="fa-solid fa-chevron-right"></i>Review</a>
-        </div>
-
-        <div class="box">
-            <h3>Our menu</h3>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Manggo Sago</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Hongkong Dessert</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Strawberry Cheesecake</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Kiwi Cheesecake</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Overnight Oats</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Fruit Salad In Jar</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Reguler Fruit Salad</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Mini Preety Fruit Salad</a>
+            <a href="index.php#home"><i class="fa-solid fa-chevron-right"></i>Home</a>
+            <a href="index.php#menu"><i class="fa-solid fa-chevron-right"></i>menu</a>
+            <a href="index.php#order"><i class="fa-solid fa-chevron-right"></i>Order</a>
+            <a href="index.php#about"><i class="fa-solid fa-chevron-right"></i>About Us</a>
+            <a href="index.php#review"><i class="fa-solid fa-chevron-right"></i>Review</a>
         </div>
 
         <div class="box">

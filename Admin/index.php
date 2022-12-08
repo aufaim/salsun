@@ -40,12 +40,6 @@
                             </a>
                         </li>
     
-                        <li>
-                            <a href="profile.php" >
-                                <span class="fa-solid fa-user"></span>
-                                <small>Profile</small>
-                            </a>
-                        </li>
 
                         <li>
                             <a href="pesanan.php">

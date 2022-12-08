@@ -2,6 +2,7 @@
     require 'functions.php';
     // ini adalah penghapus session
     // session_destroy();
+    error_reporting(0);
 
     // ini merupakan middleware untuk mencegah admin yg sudah login masuk ke dalam halaman user
     if(isset($_SESSION['status_login'])){ // jika ada session status_login
@@ -22,7 +23,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">mm]
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salsun</title>
 
@@ -55,11 +56,10 @@
     </div>
     <nav class="navbar">
         <a href="index.php">Home</a>
-        <a href="#menu">menu</a>
-        <a href="#order">Order</a>
-        <a href="#contact">Contact</a>
-        <a href="#review">Review</a>
-        <a href="#about">About Us</a>
+        <a href="index.php#menu">menu</a>
+        <a href="index.php#order">Order</a>
+        <a href="index.php#review">Review</a>
+        <a href="index.php#about">About Us</a>
        
         
         <?php 
@@ -90,9 +90,10 @@
             if(mysqli_num_rows($produk) > 0){
                 while($p = mysqli_fetch_array($produk)){
         ?>
-                
             <div class="col-4">
+                <a href="detail-produk.php?id=<?php echo $p['kode_produk'] ?>" style="text-decoration:none;">
                 <img src="image/upload/<?php echo $p['gambar_produk'] ?>" alt="">
+                </a>
                 <h3><?php echo substr($p['nama_produk'], 0, 20) ?></h3>
                 <span>Rp. <?php echo number_format($p['harga_produk']) ?></span>
                 <div class="stars">
@@ -117,24 +118,11 @@
     <div class="box-container">
         <div class="box">
             <h3>Quick Links</h3>
-            <a href="index.php"><i class="fa-solid fa-chevron-right"></i>Home</a>
-            <a href="index.php"><i class="fa-solid fa-chevron-right"></i>menu</a>
-            <a href="#order"><i class="fa-solid fa-chevron-right"></i>Order</a>
-            <a href="#about"><i class="fa-solid fa-chevron-right"></i>About Us</a>
-            <a href="#book"><i class="fa-solid fa-chevron-right"></i>Book</a>
-            <a href="#review"><i class="fa-solid fa-chevron-right"></i>Review</a>
-        </div>
-
-        <div class="box">
-            <h3>Our menu</h3>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Manggo Sago</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Hongkong Dessert</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Strawberry Cheesecake</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Kiwi Cheesecake</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Overnight Oats</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Fruit Salad In Jar</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Reguler Fruit Salad</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Mini Preety Fruit Salad</a>
+            <a href="index.php#home"><i class="fa-solid fa-chevron-right"></i>Home</a>
+            <a href="index.php#menu"><i class="fa-solid fa-chevron-right"></i>menu</a>
+            <a href="index.php#order"><i class="fa-solid fa-chevron-right"></i>Order</a>
+            <a href="index.php#about"><i class="fa-solid fa-chevron-right"></i>About Us</a>
+            <a href="index.php#review"><i class="fa-solid fa-chevron-right"></i>Review</a>
         </div>
 
         <div class="box">

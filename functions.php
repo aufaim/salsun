@@ -38,7 +38,7 @@ function login($request) { // function login, di gunakan untuk melakukan proses 
     $type = $request['type']; // masukan request post type ke variable type
 
     if($type == 'user') { // jika type nya user maka lakukan query berikut
-        $query = 'SELECT * FROM pembeli WHERE nama_pembeli = "'.$user.'" AND password = "'.MD5($pass).'"';
+        $query = 'SELECT * FROM pembeli WHERE username = "'.$user.'" AND password = "'.MD5($pass).'"';
     }else if($type == 'admin') { // jika type nya admin maka lakukan query berikut
         $query = 'SELECT * FROM penjual WHERE username = "'.$user.'" AND password = "'.MD5($pass).'"';
     }else { // jika type nya tidak ada maka tampilkan pesan error dan logic selesai di proses karena ada return
@@ -87,6 +87,7 @@ function register($request){ // function register, di gunakan untuk melakukan pr
     $telp_pembeli =  $request['telp_pembeli'];
     $alamat_pembeli =  $request['alamat_pembeli'];
     $email_pembeli =  $request['email_pembeli'];
+    $username = $request['username'];
     $password = mysqli_real_escape_string($conn, $request['password']);
     $confirm_password = mysqli_real_escape_string($conn, $request['cpassword']);
 
@@ -108,6 +109,10 @@ function register($request){ // function register, di gunakan untuk melakukan pr
         $response['message'] = 'Email tidak boleh kosong';
     }
 
+    if($username == '') {
+        $response['message'] = 'Username tidak boleh kosong';
+    }
+
     if($password == '') {
         $response['message'] = 'Password tidak boleh kosong';
     } else {
@@ -119,7 +124,7 @@ function register($request){ // function register, di gunakan untuk melakukan pr
     if($response['message'] == '') { // jika isi array response bagian message kosong alias tidak ada error maka lakukan logic berikut
 
         // lakukan query untuk mengecek apakah username sudah ada di database atau belum
-        $cek = mysqli_query($conn, "SELECT * FROM pembeli WHERE nama_pembeli = '".$nama_pembeli."'");
+        $cek = mysqli_query($conn, "SELECT * FROM pembeli WHERE nama_pembeli = '".$username."'");
 
         if(mysqli_num_rows($cek) > 0){ // jika query di atas menghasilkan data maka lakukan logic berikut
             $response['message'] = 'Username sudah terdaftar!'; // set variable response bagian message menjadi Username sudah terdaftar!
@@ -130,8 +135,8 @@ function register($request){ // function register, di gunakan untuk melakukan pr
             try {
                 // lakukan query insert ke database
                 $insert = mysqli_query($conn, 
-                    "INSERT INTO `pembeli` (`nama_pembeli`,`alamat_pembeli`,`email_pembeli`,`password`,`no_hp`,`type`) 
-                    VALUES('$nama_pembeli','$alamat_pembeli','$email_pembeli','$password','$telp_pembeli','user')"
+                    "INSERT INTO `pembeli` (`nama_pembeli`,`alamat_pembeli`,`email_pembeli`,`username`,`password`,`no_hp`,`type`) 
+                    VALUES('$nama_pembeli','$alamat_pembeli','$email_pembeli','$username','$password','$telp_pembeli','user')"
                 );
 
                 if($insert){ // jika query di atas berhasil maka lakukan logic berikut

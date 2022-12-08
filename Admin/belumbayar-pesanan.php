@@ -43,21 +43,11 @@
                         </li>
     
                         <li>
-                            <a href="profile.php" >
-                                <span class="fa-solid fa-user"></span>
-                                <small>Profile</small>
-                            </a>
-                        </li>
-
-                        <li>
                             <a href="pesanan.php">
                                 <span class="fa-solid fa-cart-shopping"></span>
                                 <small>Pesanan</small>
                             </a>
                         </li>
-    
-                       
-
 
                         <li>
                             <a href="produk.php">

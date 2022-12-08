@@ -205,6 +205,7 @@ section:nth-child(even){
 .menu .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(27rem,1fr));
+    box-sizing: border-box;
     gap: 2rem; 
 }
 .menu .box-container .box{
@@ -217,45 +218,48 @@ section:nth-child(even){
     overflow: hidden;
     text-align: center;
 }
-.menu .box-container .box img{
-    height: 20rem;
+
+.col-2 {
+    border-radius: .5rem;
+    width: 50%;
+    min-height: 200px;
+    padding: 0px;
+    box-sizing: border-box;
+    float: left;
+}
+.col-2 img {
+    box-sizing: border-box;
     border: var(--border);
     border-radius: .5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    object-fit: cover;
-    align-items: center;
-    
 }
-.menu .box-container .box .stars i{
-    color: var(--red);
-    font-size: 2rem;
-    
-}
-.menu .box-container .box span{
-    color: var(--black);
-    font-weight: bolder;
-    margin-right: 1rem;
-    font-size: 1.7rem; 
-}
-.menu .box-container .box span:hover{
-    color: var(--red);
+.col-3 {
+    border-radius: .5rem;
+    width: 50%;
+    min-height: 200px;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    float: right;
 }
 
-.menu .box-container .box .stars{
-    align-items: center;
+.col-3 h3 {
+    margin-top: 3px;
+    margin-bottom: 0px;
+    font-size: 3rem;
+    text-align: left;
 }
-.menu .box-container .box h3{
-    text-align: center;
-    color: var(--black);
-    font-size: 2.5rem;
-    padding: 1rem 0;
+.col-3 h4 {
+    color: #9e2a2b;
+    font-size: 2rem;
+    text-align: left;
 }
-.menu .box-container .box p{
-    color: var(--light-color);
-    font-size: 1.4rem;
-    line-height: 2;
+
+.col-3 p {
+    margin: 10px 0;
+    text-align: justify;
+    line-height: 25px;
+    font-size: 14px;
 }
+
 .about .row{
     display: flex;
     align-items: center;

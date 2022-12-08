@@ -16,6 +16,10 @@
     if(isset($_POST['logout'])){ // jika ada post logout
         logout(); // maka jalankan function logout di functions.php
     }
+
+    $kontak = mysqli_query($conn, "SELECT telp_penjual, email_penjual, alamat_penjual FROM penjual WHERE id_penjual = 1");
+    $k = mysqli_fetch_object($kontak);
+
 ?> 
 
 <!DOCTYPE html>
@@ -41,7 +45,7 @@
 <body>
 <!-- Header section starts -->
 <header class="header">
-    <a href="#" class="logo">
+    <a href="index.php" class="logo">
         <i class=image>
             <img src="image/SALSUN_LOGO.png" alt="" width="45px" height="45px">
         </i></a>
@@ -57,10 +61,9 @@
         
     </div>
     <nav class="navbar">
-        <a href="#home">Home</a>
+        <a href="index.php#home">Home</a>
         <a href="#menu">menu</a>
         <a href="#order">Order</a>
-        <a href="#contact">Contact</a>
         <a href="#review">Review</a>
         <a href="#about">About Us</a>
        
@@ -164,32 +167,32 @@
             <div class="inputBox">
                 <div class="input">
                     <span>Nama</span>
-                    <input type="text" placeholder="Masukan Nama Anda">
+                    <input type="text" placeholder="Masukkan Nama Anda" required>
                 </div>
                 
                 <div class="input">
                     <span>Orderan</span>
-                    <input type="text" placeholder="Masukan Nama Makanan">
+                    <input type="text" placeholder="Masukkan Nama Produk" required>
                 </div>
                 
                 <div class="input">
                     <span>Nomor Telepon</span>
-                    <input type="number" placeholder="Masukan Nomor HP">
+                    <input type="number" placeholder="Masukkan Nomor HP" required>
                 </div>
 
                 <div class="input">
-                    <span>Berapa Banyak</span>
-                    <input type="number" placeholder="Jumlah Orderan">
+                    <span>Jumlah Produk</span>
+                    <input type="number" placeholder="Masukkan Jumlah Produk yang Dipesan" required>
                 </div>
                 
                 <div class="input">
                     <span>Tanggal Pesan</span>
-                    <input type="datetime-local">
+                    <input type="datetime-local" required>
                 </div>
 
                 <div class="input">
                     <span>Alamat</span>
-                    <textarea name="" id="" cols="30" placeholder="Tulis Alamat" rows="10"></textarea>
+                    <textarea name="" id="" cols="30" placeholder="Masukkan Alamat" rows="10" required></textarea>
                 </div>
                 
                 <div class="input">
@@ -199,7 +202,7 @@
 
             </div>
            <?php if(isset($_SESSION['status_login']) && $_SESSION['status_login'] == true) {?>
-                <a href="#" input  type="submit"class="btn"> Order Now</a>
+                <a href="https://api.whatsapp.com/send?phone=<?php echo $k->telp_penjual ?>&text=Hai, saya tertarik dengan produk Anda." target="_blank" input  type="submit"class="btn"> Order Now</a>
             <?php }else {?>
                 <a href="login.php" input  type="submit"class="btn"> Order Now</a>
             <?php } ?>
@@ -339,24 +342,11 @@
     <div class="box-container">
         <div class="box">
             <h3>Quick Links</h3>
-            <a href="#home"><i class="fa-solid fa-chevron-right"></i>Home</a>
-            <a href="#menu"><i class="fa-solid fa-chevron-right"></i>menu</a>
-            <a href="#order"><i class="fa-solid fa-chevron-right"></i>Order</a>
-            <a href="#about"><i class="fa-solid fa-chevron-right"></i>About Us</a>
-            <a href="#book"><i class="fa-solid fa-chevron-right"></i>Book</a>
-            <a href="#review"><i class="fa-solid fa-chevron-right"></i>Review</a>
-        </div>
-
-        <div class="box">
-            <h3>Our menu</h3>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Manggo Sago</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Hongkong Dessert</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Strawberry Cheesecake</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Kiwi Cheesecake</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Overnight Oats</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Fruit Salad In Jar</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Reguler Fruit Salad</a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i>Mini Preety Fruit Salad</a>
+            <a href="index.php#home"><i class="fa-solid fa-chevron-right"></i>Home</a>
+            <a href="index.php#menu"><i class="fa-solid fa-chevron-right"></i>menu</a>
+            <a href="index.php#order"><i class="fa-solid fa-chevron-right"></i>Order</a>
+            <a href="index.php#about"><i class="fa-solid fa-chevron-right"></i>About Us</a>
+            <a href="index.php#review"><i class="fa-solid fa-chevron-right"></i>Review</a>
         </div>
 
         <div class="box">

@@ -40,6 +40,7 @@
 
             <form class="inputs-container" method="POST" action="">
                 <input type="text" placeholder="Nama Lengkap" name="nama_pembeli" class="input-control">
+                <input type="text" placeholder="Username" name="username" class="input-control">
                 <input type="password" placeholder="Password" name="password" class="input-control">
                 <input type="password" placeholder="Confirm Password" name="cpassword" class="input-control">
                 <input type="text" placeholder="Alamat" name="alamat_pembeli" class="input-control">
